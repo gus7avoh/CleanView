@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <meta name="referrer" content="origin-when-cross-origin" />
+
+  <link rel="icon" href="./favicon.ico" id="favicon">
+  <title>Acesso Portal do Aluno</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link rel="preload" fetchpriority="high" as="image" href="./img/bg.jpg" type="image/jpg">
+
+  <meta name="description" content="Portal do Aluno">
+  <meta name="keywords" content="login, portal do aluno, portal digital do aluno, faculdade, ensino, acesso, anhanguera, pitágoras, unic, uniderp, unime, unopar, ampli, pda, ptc, sophia, ava, lms, colaborar, olimpo, kroton, cogna">
+  <meta name="author" content="Cogna">
+  <meta property="og:title" content="Acesso ao Portal do Aluno">
+  <meta property="og:description" content="Acesse o portal do aluno e AVA/LMS">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="./favicon.ico">
+  <meta property="og:url" content="https://login.anhanguera.com">
+  <meta name="twitter:card" content="/img/anhanguera/login-pa.jpg">
+
+  <!-- Datadog -->
+  <script
+      src="https://www.datadoghq-browser-agent.com/us1/v5/datadog-rum.js"
+      integrity="sha384-UgzJ6nYoi7QXJmQwnVvGcTtk5BYXhOelp8YIbEu11dEh1Y7PgqbHy3wp8xJEEzst"
+      type="text/javascript"
+      crossorigin="anonymous"
+      defer>
+    </script>
+  <script>
+    if (!window.Cypress && 'prd' === 'prd') {
+      window.DD_RUM && window.DD_RUM.init({
+        clientToken: 'pubb0d6455dee18907ba63aae6d11b81f48',
+        applicationId: '1e883603-2e9e-40a1-ba57-ea02e1ca36db',
+        site: 'datadoghq.com',
+        service: 'login-pda-servicenow-',
+        env: 'prd',
+        version: '2.20260626.11-web',
+        sessionSampleRate: 5,
+        sessionReplaySampleRate: 5,
+        trackUserInteractions: true,
+        trackResources: true,
+        trackLongTasks: true,
+        defaultPrivacyLevel: 'mask-user-input',
+        allowedTracingUrls: [
+          /https:\/\/.*\.colaboraread\.com\.br/, /https:\/\/.*\.faculdadepitagoras\.com\.br/,
+          /https:\/\/.*\.unime\.edu.br/, /https:\/\/.*\.unic\.br/, /https:\/\/.*\.unopar\.br/,
+          /https:\/\/.*\.anhanguera\.com/, /https:\/\/.*\.uniderp\.br/, /https:\/\/.*\.kroton\.com\.br/,
+        ],
+      });
+    }
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7Y6BJ3NBV2"></script>
+  <script>
+    if ('prd' === 'prd') {
+      // Mudamos de gtag para gaV4 para não interferir no GTM do Marketing
+      window.dataLayer = window.dataLayer || [];
+      function gaV4() {dataLayer.push(arguments);}
+      gaV4('js', new Date());
+      // gaV4('config', 'G-7Y6BJ3NBV2', { user_id: '{0}' });
+      gaV4('consent', 'default', {
+        ad_storage: 'denied',
+        analytics_storage: 'granted',
+        ads_data_redaction: 'true',
+      });
+      gaV4('event', 'app', {
+        app: 'Login centralizado',
+        host: window.location.host,
+      });
+    }
+  </script>
+  <script type="module" crossorigin src="./assets/index-DUChME3K.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/core-services-C0ItUaKj.js">
+  <link rel="modulepreload" crossorigin href="./assets/app-middlewares-kDS5XdNs.js">
+  <link rel="modulepreload" crossorigin href="./assets/student-courses-DvPehoXY.js">
+  <link rel="modulepreload" crossorigin href="./assets/password-recovery-N-EvQD2s.js">
+  <link rel="stylesheet" crossorigin href="./assets/student-courses-j7bbn-v8.css">
+  <link rel="stylesheet" crossorigin href="./assets/password-recovery-Dm7aNK5B.css">
+  <link rel="stylesheet" crossorigin href="./assets/index-Cdr0jxLX.css">
+</head>
+
+<body>
+  <div id="app"></div>
+</body>
+
+</html>
