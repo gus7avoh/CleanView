@@ -5,7 +5,7 @@ type ResponseTypes = {
 }
 
 export class Client {
-    uri: string = ''
+    private uri: string = ''
 
     constructor(uri: string) {
         this.uri = uri
