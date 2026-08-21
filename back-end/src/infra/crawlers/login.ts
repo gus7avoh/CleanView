@@ -1,4 +1,5 @@
-import { PlaywrightClient } from './clients/PlaywrightClient';
+import { PlaywrightClient } from '../clients/PlaywrightClient';
+import { TsClient } from '../clients/TsClient';
 import { Page } from 'playwright';
 import dotenv from 'dotenv';
 
@@ -18,8 +19,8 @@ async function login() {
             'https://login.kroton.com.br/'
         );
     
-        const cpf: string = process.env.USER!
-        const senha: string = process.env.PASSWORD!
+        const cpf: string = await process.env.USER!
+        const senha: string = await process.env.PASSWORD!
     
         await page.locator('#username').waitFor();
         await page.locator('#username').fill(cpf);
@@ -28,31 +29,45 @@ async function login() {
         await page.locator('#login-pass').fill(senha)
         await page.getByRole('button', { name: 'Entrar' }).click();
     
-        const skip2Af: boolean = await page.getByRole('button', { name: 'Pular por enquanto' }).count() > 0;
-        if (skip2Af) {
-            await page.getByRole('button', { name: 'Pular por enquanto' }).click();
-            await page.locator('span', { hasText: 'Quadro de Horários' }).waitFor();
-        }
+        await page.getByRole('button', { name: 'Pular por enquanto' }).waitFor();
 
-        const closeBtn: boolean = await page.locator('button:has(img[alt="close"])').count() > 0;
-        if (closeBtn) {
-            await page.locator('button:has(img[alt="close"])').click();
-        }
+        await page.getByRole('button', { name: 'Pular por enquanto' }).click();
+        await page.locator('#meu_curso').waitFor();
+
+        await page.locator('button:has(img[alt="close"])').waitFor();
+        await page.locator('button:has(img[alt="close"])').click();
     
-        await sleep(3000);
+        return await playwrightClient.getCookies();
     }catch(e){
         throw new Error("Erro ao logar :" + e);
     }
 }
 
+async function getQuadroHorarios(tsClient: TsClient) {
+    return await tsClient.request({
+        method: 'GET',
+        url: 'https://alunodigital.anhanguera.com/quadro-horarios',
+        responseType: 'text'
+    });
+}
 
-function main(){
-    try{
-        login();
+async function main() {
+    try {
+        await login();
+
+        const tsClient = new TsClient(
+            playwrightClient.getRequestContext(),
+            'https://alunodigital.anhanguera.com'
+        );
+
+        const materias = await getQuadroHorarios(tsClient);
         
-    }catch(e){
-        console.log(e);
+
+        console.log(materias);
+    } catch (error) {
+        console.error(error);
     }
 }
 
+void main();
 main();
